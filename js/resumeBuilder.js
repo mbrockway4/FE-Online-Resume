@@ -38,25 +38,10 @@ var projects = {
 }
 
 
-var bio = {
-	"name" : "Michael Brockway",
-	"role" : "Equipment Engineer",
-	"contacts" : 
-	[{
-		"Phone" : "734-891-5555"},
-		{
-		"email" : "B@B.com"},
-		{
-		"location" : "Canton, MI"
-		}
+  
+ 
 
-	],
-	"welcome" : "Hello",
-	"skills" : ["Awesome", "test", "test2"],
-	"image" : "images/fry.jpg",
-	"location" : "Farmington, MI"
-	
-}
+
 
 var education = {
 	"schools": [{
@@ -72,11 +57,51 @@ var education = {
 	}]
 }
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+var bio = {
+	"name" : "Michael Brockway",
+	"role" : "Equipment Engineer",
+	"contacts" : 
+	[	{
+		"mobile" : "734-891-5555"},
+		{
+		"email" : "MBrockway4@gmail.com"},
+		{
+		"github" : "https://github.com/mbrockway4"
+		},
+		{
+		"twitter" : "Brockout"
+		},
+		{
+		"location" : "Dearborn, MI"
+		}
+	],
+	"welcome" : "Hello",
+	"skills" : ["Awesome", "test", "test2"],
+	"image" : "images/fry.jpg",
+	"location" : "Farmington, MI"
+	
+}
 
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
+bio.display = function()
+{
+
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);
+		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+		var formattedContacts = HTMLcontactGeneric.replace("%contact%", bio.contacts);
+		var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcome);
+		var formattedSkills = HTMLcontactGeneric.replace("%data%", bio.skills);
+		var formattedImage = HTMLbioPic.replace("%data%", bio.image);
+		var formattedLocation = HTMLlocation.replace("%data%", bio.location);
+		$("#header").prepend(formattedRole);
+		$("#header").prepend(formattedName);
+
+		$("#header").append(formattedContacts);
+		$("#header").append(formattedWelcome);
+		$("#header").append(formattedSkills);
+		$("#header").append(formattedImage);
+		$("#header").append(formattedLocation);
+	}
+
 
 var HTMLskills = HTMLskills.replace("%data%", bio.skills);
 
@@ -139,14 +164,10 @@ function inName(name)
 	return name[0] + " " + name[1];
 	}
 
+bio.display();
 work.display();
 projects.display();
 
 $("#mapDiv").append(googleMap);
 
-$(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
-  logClicks(x,y)
-});
 
