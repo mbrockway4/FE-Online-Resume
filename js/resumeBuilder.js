@@ -1,4 +1,13 @@
-
+// Hello.
+//
+// This is JSHint, a tool that helps to detect errors and potential
+// problems in your JavaScript code.
+//
+// To start, simply enter some JavaScript anywhere on this page. Your
+// report will appear on the right side.
+//
+// Additionally, you can toggle specific options in the Configure
+// menu.
 var work = {
     "jobs": [{
         "employer": "Westborn Market",
@@ -19,7 +28,7 @@ var work = {
         "description": "Doing Stuff",
         "location": "Southfield, MI"
     }]
-}
+};
 
 var bio = {
     "name": "Michael Brockway",
@@ -36,7 +45,7 @@ var bio = {
     "image": "images/fry.jpg",
     "location": "Farmington, MI"
 
-}
+};
 
 var education = {
     "schools": [{
@@ -83,7 +92,7 @@ var projects = {
         "description": "Second Project Description",
         "images": ["images/project2.jpg", "images/project2.jpg"]
     }]
-}
+};
 
 bio.display = function() {
 
@@ -106,29 +115,26 @@ bio.display = function() {
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
 
-    if (bio.contacts != undefined) {
+    if (bio.contacts !== undefined) {
         for (index in formattedContact) {
 
             $("#topContacts").append(formattedContact[index]);
             $("#footerContacts").append(formattedContact[index]);
         }
-    };
-
-
+    }
 
     $("#header").append(formattedWelcome);
     $("#header").append(formattedImage);
 
-
-    if (bio.skills != undefined) {
+    if (bio.skills !== undefined) {
         $("#header").append(HTMLskillsStart);
         for (index in bio.skills) {
             //debugger;
             var formattedSkills = HTMLskills.replace('%data%', bio.skills[index]);
             $("#header").append(formattedSkills);
         }
-    };
-}
+    }
+};
 
 
 
@@ -142,7 +148,7 @@ education.display = function() {
         var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[index].dates);
         var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[index].location);
         var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[index].majors);
-        var formattedHTMLonlineURL = HTMLonlineURL.replace("%data%", education.schools[index].url)
+        var formattedHTMLonlineURL = HTMLonlineURL.replace("%data%", education.schools[index].url);
 
         $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
         $(".education-entry:last").append(formattedSchoolDates);
@@ -167,7 +173,7 @@ education.display = function() {
         $(".education-entry:last").append(formattedOnlineURL);
 
     }
-}
+};
 
 work.display = function() {
 
@@ -195,7 +201,7 @@ projects.display = function() {
 
         var Title = HTMLprojectTitle.replace("%data%", projects.Projects[index].title);
         var Description = HTMLprojectDescription.replace("%data%", projects.Projects[index].description);
-        var formattedDates = HTMLprojectDates.replace("%data%", projects.Projects[index].dates)
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.Projects[index].dates);
 
         $("#projects").append(HTMLprojectStart);
 
@@ -217,5 +223,3 @@ work.display();
 projects.display();
 education.display();
 $("#mapDiv").append(googleMap);
-
-
